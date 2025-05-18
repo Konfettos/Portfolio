@@ -36,15 +36,20 @@
     }
     .container {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      flex-direction: row;
+      align-items: flex-end;
       max-width: 1200px;
+      height: 328px;
       margin: 100px auto 0px;
       padding: 0 40px;
     }
     .left {
       max-width: 60%;
-      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      height: 100%;
+      margin-bottom: 0;
     }
     .left h1 {
       font-size: 120px;
@@ -54,6 +59,9 @@
       transform: translateX(-2px);
     }
     .left h2 {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease-out 0.3s forwards;
       font-size: 40px;
       margin-top: 0;
       margin-bottom: 12px;
@@ -61,15 +69,20 @@
       font-family: 'Graphik LCG', sans-serif;
     }
     .left p {
-      font-size: 24px;
-      font-weight: 500;
-      font-family: 'Graphik LCG', sans-serif;
-      color: #333;
-      margin-top: 0;
-      margin-bottom: 0;
-    }
+  font-size: 24px;
+  font-weight: 500;
+  font-family: 'Graphik LCG', sans-serif;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 0;
+}
     .right {
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
       text-align: left;
+      margin-bottom: 2px;
     }
     .right p {
       font-size: 16px;
@@ -80,23 +93,85 @@
       display: flex;
       justify-content: flex-start;
       gap: 34px;
+      margin-top: 16px;
     }
     .links span {
-      font-size: 16px;
-      color: #999;
-    }
+  color: #999;
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.links span::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  right: 0;
+  height: 1px;
+  width: 0;
+  background-color: #242629;
+  transition: width 0.4s ease, right 0.4s ease;
+}
+
+.links span:hover {
+  color: #242629;
+}
+
+.links span:hover::after {
+  width: 100%;
+  right: auto;
+  left: 0;
+}
     .line {
       height: 2px;
       background-color: #242629;
       border-radius: 16px;
       margin-top: 55px;
-      width: 100%;
+      width: calc(100% - 80px);
       max-width: 1200px;
       margin-left: auto;
       margin-right: auto;
     }
+    @media (min-width: 1024px) and (max-width: 1439px) {
+  .left h1 {
+    font-size: 120px;
+    white-space: nowrap;
+  }
+}
+      .left h2 {
+        font-size: 34px;
+      }
+      .left p {
+        font-size: 20px;
+      }
+      .links {
+        gap: 28px;
+      }
+    }
+
+    @media (min-width: 1440px) {
+      .container {
+        padding: 0 40px;
+      }
+      .left h1 {
+        font-size: 120px;
+      }
+      .left h2 {
+        font-size: 40px;
+      }
+      .left p {
+        font-size: 24px;
+      }
+      .links {
+        gap: 34px;
+      }
+    }
+
     @media (max-width: 768px) {
       .container {
+        flex-direction: column;
+        align-items: flex-start;
         padding: 0 20px;
       }
       .left h1 {
@@ -115,21 +190,117 @@
         gap: 16px;
       }
     }
-  </style>
+    @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .with-text {
+    opacity: 0;
+    transform: translateY(20px);
+    display: inline-block;
+    animation: fadeInUp 0.6s ease-out 0.6s forwards;
+  }
+
+  .rest-text {
+    opacity: 0;
+    transform: translateY(20px);
+    display: inline-block;
+    animation: fadeInUp 0.6s ease-out 0.9s forwards;
+  }
+
+  .heart-icon {
+    opacity: 0;
+    transform: translateY(20px);
+    display: inline-block;
+    animation: fadeInUp 0.6s cubic-bezier(0.12, 1.66, 0.71, 1.4) 1.2s forwards;$1
+  }
+
+.mail-tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  background-color: #242629;
+  color: #fff;
+  text-align: center;
+  border-radius: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.3s;
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: 14px;
+}
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #242629 transparent transparent transparent;
+}
+.mail-tooltip-wrapper:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+.tooltip button {
+  margin-left: 8px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  vertical-align: middle;
+}
+</style>
+<script>
+  function copyEmail() {
+    const email = document.getElementById('emailText').innerText;
+    navigator.clipboard.writeText(email).then(() => {
+      alert('Email скопирован!');
+    });
+  }
+</script>
 </head>
 <body>
-  <div class="container" style="flex-direction: row; align-items: flex-end; height: 328px;">
-    <div class="left" style="display: flex; flex-direction: column; justify-content: flex-end; height: 100%; margin-bottom: 0;">
+  <div class="container">
+    <div class="left">
       <h1>Hi, i'm Kirill</h1>
       <h2>Product designer</h2>
-      <p>With lo❤️e to artificial intelligence & inspire people</p>
+      <div style="display: inline-flex; align-items: center; gap: 0px; font-size: 24px; font-weight: 500; font-family: 'Graphik LCG', sans-serif; color: #333; white-space: nowrap;">
+  <span class="with-text" style="margin-right: 1px;">With lo</span>
+  <img class="heart-icon" src="icons/heart.svg" alt="heart icon" style="width: 16px; height: 14px; vertical-align: middle; margin-top: 2px;">
+  <span class="rest-text" style="margin-left: 1px;">e to artificial intelligence & inspire people</span>
+</div>
     </div>
-    <div class="right" style="margin-left: auto; display: flex; flex-direction: column; justify-content: flex-end;">
-      <p style="margin-bottom: auto;">Let's make something great.<br>Get in touch for availability.</p>
+    <div class="right">
+      <p style="margin: 0;">
+        <span style="display: block; margin-bottom: 8px;">Let's make something great.</span>
+        <span>Get in touch for availability.</span>
+      </p>
       <div class="links">
-        <span>Telegram</span>
-        <span>Whatsapp</span>
-        <span>Mail</span>
+        <a href="https://t.me/mettos" target="_blank"><span>Telegram</span></a>
+        <a href="https://wa.me/+79858045373" target="_blank"><span>Whatsapp</span></a>
+        <span class="mail-tooltip-wrapper">Mail
+  <div class="tooltip">
+    <span id="emailText">Hrenkov.k.v@gmail.com</span>
+    <button onclick="copyEmail()">📋</button>
+  </div>
+</span>
       </div>
     </div>
   </div>
