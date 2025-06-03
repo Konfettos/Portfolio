@@ -130,11 +130,11 @@
       left: 0;
     }
     .line {
-
       height: 2px;
       background-color: #242629;
       border-radius: 16px;
       margin-top: 55px;
+      width: calc(100% - 80px);
       max-width: 1200px;
       margin-left: auto;
       margin-right: auto;
@@ -175,175 +175,22 @@
       .container {
         flex-direction: column;
         align-items: flex-start;
-        padding-top: 80px;
-        padding-bottom: 0px;
-        padding-left: 16px;
-        padding-right: 16px;
-        margin: 0; /* Убрано auto для корректного отступа */
-        height: auto;
-        width: calc(100% - 32px); /* Добавлено для отступов 16px слева и справа */
-        max-width: none; /* Убрано ограничение max-width */
-      }
-      .left {
-        max-width: 100%;
-        text-align: left;
+        padding: 0 20px;
       }
       .left h1 {
         font-size: 48px;
-        font-weight: 700;
-        margin: 0 0 32px 0;
-        color: #242629;
-        opacity: 1;
-        transform: none;
-        animation: none;
       }
       .left h2 {
-        font-size: 32px;
-        font-weight: 700;
-        margin: 0 0 6px 0;
-        color: #242629;
-        opacity: 1;
-        transform: none;
-        animation: none;
+        font-size: 22px;
       }
       .left p {
-        display: none;
+        font-size: 16px;
       }
       .right {
-        margin-left: 0;
-        margin-top: 32px;
-        align-items: flex-start;
-      }
-      .right p {
-        font-size: 14px;
-        font-weight: 400;
-        color: #444;
-        margin: 0;
-        display: block;
-        align-items: flex-start;
-        gap: 0;
-        white-space: normal;
-      }
-      .great-text {
-        display: block;
-        margin-bottom: 8px;
-      }
-      .touch-text {
-        display: block;
+        margin-top: 40px;
       }
       .links {
-        font-size: 14px;
-        display: flex;
-        justify-content: flex-start;
-        gap: 32px;
-        margin-top: 24px;
-      }
-      .links a span {
-        color: #999999;
-        position: relative;
-        display: inline-block;
-        transition: none;
-        cursor: pointer;
-      }
-      .links a span::after {
-        content: '';
-        position: absolute;
-        bottom: -4px;
-        left: 0;
-        height: 1px;
-        width: 100%;
-        background-color: rgba(36, 38, 41, 0.12);
-        transition: none;
-      }
-      .links a:hover span {
-        color: #999999;
-      }
-      .links a:hover span::after {
-        width: 100%;
-        left: 0;
-      }
-      .links .mail-tooltip-wrapper span {
-        position: relative;
-      }
-      .links .mail-tooltip-wrapper span::after {
-        content: '';
-        position: absolute;
-        bottom: -4px;
-        left: 0;
-        height: 1px;
-        width: 100%;
-        background-color: rgba(36, 38, 41, 0.12);
-        transition: none;
-      }
-      .mail-tooltip-wrapper {
-        display: none;
-      }
-      .custom-tooltip, .mail-tooltip-wrapper:hover .custom-tooltip {
-        display: none;
-      }
-      .line {
-        height: 2px;
-        background-color: #242629;
-        border-radius: 16px;
-        margin-top: 32px;
-        width: calc(100% - 32px); /* Оставлено для отступов 16px слева и справа */
-        max-width: none;
-        margin-left: 16px; /* Изменено с auto на 16px */
-        margin-right: 16px; /* Изменено с auto на 16px */
-        margin-bottom: 24px; /* Добавлено для нижнего отступа 24px */
-      }
-      /* Скрываем анимированный блок на мобильной версии */
-      .with-heart {
-        display: none;
-      }
-      /* Статичный блок для мобильной версии без сердечка и с отступом */
-      .with-heart-static {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0;
-        font-size: 18px;
-        font-weight: 500;
-        color: #242629;
-        white-space: normal;
-      }
-      .with-text-static {
-        margin-top: 6px;
-        margin-right: 0;
-        font-size: 18px;
-        font-weight: 500;
-      }
-      .rest-text-first-static {
-        margin-top: 6px;
-        display: inline;
-        font-size: 18px;
-        font-weight: 500;
-      }
-      .rest-text-second-static {
-        margin-top: 6px;
-        margin-left: 2px;
-        display: block;
-        font-size: 18px;
-        font-weight: 500;
-      }
-      .heart-icon-static {
-        display: none;
-      }
-      .custom-tooltip {
-        transition: none;
-        opacity: 0;
-        visibility: hidden;
-      }
-      .mail-tooltip-wrapper:hover .custom-tooltip,
-      .custom-tooltip:hover {
-        opacity: 0;
-        visibility: hidden;
-      }
-      #emailGroup {
-        transition: none;
-      }
-      #copiedText {
-        transition: none;
+        gap: 16px;
       }
     }
     /* Планшеты: портретный режим (768px–991px) */
@@ -372,8 +219,7 @@
       }
       .left p {
         font-size: 18px;
-        font-weight: 5
-00;
+        font-weight: 500;
         line-height: 21.6px;
         margin-bottom: 24px;
       }
@@ -547,17 +393,10 @@
       display: inline-flex;
       animation: fadeInUp 0.6s ease-out 0.6s forwards;
     }
-    .rest-text-first {
+    .rest-text {
       opacity: 0;
       transform: translateY(20px);
-      display: inline;
-      animation: fadeInUp 0.6s ease-out 0.9s forwards;
-    }
-    .rest-text-second {
-      margin-left: 6px;
-      opacity: 0;
-      transform: translateY(20px);
-      display: block;
+      display: inline-flex;
       animation: fadeInUp 0.6s ease-out 0.9s forwards;
     }
     .heart-icon {
@@ -626,7 +465,7 @@
       font-size: 14px;
     }
     .email-text-wrapper {
-      position:/move relative;
+      position: relative;
       display: inline-block;
       height: 20px;
     }
@@ -685,17 +524,10 @@
     <div class="left">
       <h1>Hi, i'm Kirill</h1>
       <h2>Product designer</h2>
-      <div style="display: inline-flex; align-items: center; gap: 0px; font-size: 24px; font-weight: 500; font-family: 'Graphik LCG', sans-serif; color: #333; white-space: nowrap;" class="with-heart">
+      <div style="display: inline-flex; align-items: center; gap: 0px; font-size: 24px; font-weight: 500; font-family: 'Graphik LCG', sans-serif; color: #333; white-space: nowrap;">
         <span class="with-text" style="margin-right: 1px;">With lo</span>
         <img class="heart-icon" src="icons/heart.svg" alt="heart icon" style="width: 16px; height: 14px; vertical-align: middle; margin-top: 2px;">
-        <span class="rest-text-first" style="margin-left: 1px;">ve to artificial intelligence</span>
-        <span class="rest-text-second">& inspire people</span>
-      </div>
-      <!-- Статичный блок для мобильной версии -->
-      <div style="display: none; font-size: 18px; font-weight: 500; font-family: 'Graphik LCG', sans-serif; color: #333; white-space: normal;" class="with-heart-static">
-        <span class="with-text-static">With lo</span>
-        <span class="rest-text-first-static">ve to artificial intelligence</span>
-        <span class="rest-text-second-static">& inspire people</span>
+        <span class="rest-text" style="margin-left: 1px;">e to artificial intelligence & inspire people</span>
       </div>
     </div>
     <div class="right">
@@ -740,18 +572,13 @@
       }
 
       navigator.clipboard.writeText(document.getElementById('emailText').innerText).then(() => {
-        if (window.innerWidth > 767) { // Анимация только для десктопа и планшета
-          emailGroup.style.opacity = '0';
-          copiedText.style.opacity = '1';
+        emailGroup.style.opacity = '0';
+        copiedText.style.opacity = '1';
 
-          setTimeout(() => {
-            emailGroup.style.opacity = '1';
-            copiedText.style.opacity = '0';
-          }, 2000);
-        } else {
-          // На мобильной версии просто копируем без анимации
-          alert('Email скопирован: Hrenkov.k.v@gmail.com');
-        }
+        setTimeout(() => {
+          emailGroup.style.opacity = '1';
+          copiedText.style.opacity = '0';
+        }, 2000);
       }).catch(() => {
         alert('Не удалось скопировать email');
       });
@@ -767,24 +594,20 @@
         let hideTimeout;
 
         const showTooltip = () => {
-          if (window.innerWidth > 767) { // Показываем тултип только на десктопе и планшете
-            clearTimeout(hideTimeout);
-            tooltip.style.opacity = '1';
-            tooltip.style.visibility = 'visible';
-            isHovering = true;
-          }
+          clearTimeout(hideTimeout);
+          tooltip.style.opacity = '1';
+          tooltip.style.visibility = 'visible';
+          isHovering = true;
         };
 
         const hideTooltip = () => {
-          if (window.innerWidth > 767) {
-            isHovering = false;
-            hideTimeout = setTimeout(() => {
-              if (!isHovering) {
-                tooltip.style.opacity = '0';
-                tooltip.style.visibility = 'hidden';
-              }
-            }, 300);
-          }
+          isHovering = false;
+          hideTimeout = setTimeout(() => {
+            if (!isHovering) {
+              tooltip.style.opacity = '0';
+              tooltip.style.visibility = 'hidden';
+            }
+          }, 300);
         };
 
         const setupTooltip = () => {
@@ -798,8 +621,6 @@
             wrapper.removeEventListener('mouseleave', hideTooltip);
             tooltip.removeEventListener('mouseenter', showTooltip);
             tooltip.removeEventListener('mouseleave', hideTooltip);
-            tooltip.style.opacity = '0';
-            tooltip.style.visibility = 'hidden';
           }
         };
 
@@ -807,22 +628,6 @@
         window.addEventListener('resize', setupTooltip);
       }
 
-      // Переключение между анимированным и статичным блоком
-      const withHeart = document.querySelector('.with-heart');
-      const withHeartStatic = document.querySelector('.with-heart-static');
-
-      function toggleHeartDisplay() {
-        if (window.innerWidth <= 767) {
-          withHeart.style.display = 'none';
-          withHeartStatic.style.display = 'flex';
-        } else {
-          withHeart.style.display = 'inline-flex';
-          withHeartStatic.style.display = 'none';
-        }
-      }
-
-      toggleHeartDisplay();
-      window.addEventListener('resize', toggleHeartDisplay);
       toggleMailLink();
     });
 
@@ -852,17 +657,11 @@
           linksDiv.appendChild(newLink);
         }
       } else {
-        if (mailWrapper && mailWrapper.parentNode) {
-          mailWrapper.remove();
+        if (mailWrapper && !mailWrapper.parentNode) {
+          linksDiv.appendChild(mailWrapper);
         }
-        if (!mailLink) {
-          const newLink = document.createElement('a');
-          newLink.href = 'mailto:Hrenkov.k.v@gmail.com';
-          newLink.className = 'mail-link';
-          const span = document.createElement('span');
-          span.textContent = 'Mail';
-          newLink.appendChild(span);
-          linksDiv.appendChild(newLink);
+        if (mailLink && mailLink.parentNode) {
+          mailLink.remove();
         }
       }
     }
